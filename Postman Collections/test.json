@@ -1,0 +1,85 @@
+{
+	"info": {
+		"_postman_id": "ce29bb55-50db-4d1a-b995-bdaa15140ef1",
+		"name": "Test2023",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5a2baa2f-34b7-40b5-959d-f9f76d55a75f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"true\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "ece2d079-1d7d-483d-9f9d-1998d0591b27",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userName\": \"Svetlana\",\r\n  \"password\": \"Safework1968!@#\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseUrl}}Account/v1/Authorized"
+			},
+			"response": []
+		},
+		{
+			"name": "New Request negativ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5a2baa2f-34b7-40b5-959d-f9f76d55a75f",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"var jsonObject = xml2Json(responseBody);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "c6ca4d97-0dbc-4bb0-be4e-c20d4224b35f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userName\": \"Svetlana1\",\r\n  \"password\": \"Safework1968!@#\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseUrl}}Account/v1/Authorized"
+			},
+			"response": []
+		}
+	]
+}
